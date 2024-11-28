@@ -1,8 +1,12 @@
 class StringCalculator {
-  public add(text: string): number | string | undefined {
+  public add(text: string): number | string | undefined | Error {
     if (!text) return 0
     const allCharacters: string[] = this.splitText(text)
     const arrayOfNumber = this.convertToNumber(allCharacters)
+    if (this.hasNegativeNumber(arrayOfNumber)) {
+      const negativeNumbers = this.findNegativeNumber(arrayOfNumber)
+      throw new Error(`Negatives not allowed: ${negativeNumbers}`)
+    }
     return arrayOfNumber.reduce((a, b) => a + Number(b), 0)
   }
 
@@ -28,6 +32,17 @@ class StringCalculator {
     const customDelimitter = delimiter.slice(2)
 
     return rest.join("").split(customDelimitter)
+  }
+
+  private hasNegativeNumber(arryOfNumber: number[]): boolean {
+    return arryOfNumber.some((item) => Number(item) < 0)
+  }
+
+  private findNegativeNumber(arryOfNumber: number[]): string {
+    return arryOfNumber
+      .filter((item) => item < 0)
+      .map((number) => Math.abs(number))
+      .join(", ")
   }
 }
 
