@@ -3,11 +3,14 @@ class StringCalculator {
     if (!text) return 0
     const allCharacters: string[] = this.splitText(text)
     const arrayOfNumber = this.convertToNumber(allCharacters)
+
     if (this.hasNegativeNumber(arrayOfNumber)) {
       const negativeNumbers = this.findNegativeNumber(arrayOfNumber)
       throw new Error(`Negatives not allowed: ${negativeNumbers}`)
     }
-    return arrayOfNumber.reduce((a, b) => a + Number(b), 0)
+
+    const validNumbers = this.removeNumbersGreaterThan1000(arrayOfNumber)
+    return validNumbers.reduce((a, b) => a + Number(b), 0)
   }
 
   private splitText(text: string): string[] {
@@ -43,6 +46,10 @@ class StringCalculator {
       .filter((item) => item < 0)
       .map((number) => Math.abs(number))
       .join(", ")
+  }
+
+  private removeNumbersGreaterThan1000(arryOfNumber: number[]): number[] {
+    return arryOfNumber.filter((item) => item <= 1000)
   }
 }
 
