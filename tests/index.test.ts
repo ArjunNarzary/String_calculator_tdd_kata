@@ -26,4 +26,8 @@ describe("String Calculator", () => {
   test("Should return sum of all numbers delimited by newline", () => {
     expect(calculator.add("1,2\n3")).toBe(6)
   })
+
+  test("Should return sum of all numbers with custom delimiters", () => {
+    expect(calculator.add("//;\n1;2;3")).toBe(3)
+  })
 })
