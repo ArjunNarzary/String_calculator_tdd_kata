@@ -35,5 +35,9 @@ describe("String Calculator", () => {
     expect(() => {
       calculator.add("//;\n-1;2;3")
     }).toThrow("Negatives not allowed: 1")
+
+    expect(() => {
+      calculator.add("//;\n-1;2;-3")
+    }).toThrow("Negatives not allowed: 1, 3")
   })
 })
