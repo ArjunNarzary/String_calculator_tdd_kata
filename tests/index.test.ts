@@ -51,5 +51,6 @@ describe("String Calculator", () => {
 
   test("Should return sum with multiple delimiter with any length", () => {
     expect(calculator.add("//[*][%]\n1*2%3")).toBe(6)
+    expect(calculator.add("//[**][%%%]\n1**2%%%3")).toBe(6)
   })
 })
