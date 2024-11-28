@@ -1,7 +1,7 @@
 class StringCalculator {
   public add(text: string): number | string | undefined {
     if (text) {
-      return -1
+      return parseInt(text)
     } else {
       return 0
     }
