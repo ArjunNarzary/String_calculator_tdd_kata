@@ -40,4 +40,8 @@ describe("String Calculator", () => {
       calculator.add("//;\n-1;2;-3")
     }).toThrow("Negatives not allowed: 1, 3")
   })
+
+  test("Number geater than 1000 should be ignored", () => {
+    expect(calculator.add("1,2,3,1001")).toBe(6)
+  })
 })
