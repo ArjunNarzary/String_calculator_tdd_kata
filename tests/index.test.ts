@@ -30,4 +30,10 @@ describe("String Calculator", () => {
   test("Should return sum of all numbers with custom delimiters", () => {
     expect(calculator.add("//;\n1;2")).toBe(3)
   })
+
+  test("Should throw and error if negative number provided", () => {
+    expect(() => {
+      calculator.add("//;\n-1;2;3")
+    }).toThrow("Negatives not allowed: 1")
+  })
 })
