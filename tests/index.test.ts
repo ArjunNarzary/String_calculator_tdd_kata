@@ -13,7 +13,11 @@ describe("String Calculator", () => {
     expect(calculator.add("1")).toBe(1)
   })
 
-  test("Should return sum of 2 numbers delimeted by comma", () => {
+  test("Should return sum of 2 numbers delimited by comma", () => {
     expect(calculator.add("1,2")).toBe(3)
+  })
+
+  test("Should return sum of all numbers delimited by comma", () => {
+    expect(calculator.add("1,2,3")).toBe(6)
   })
 })
