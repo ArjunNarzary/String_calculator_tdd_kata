@@ -2,9 +2,11 @@ import StringCalculator from "../src"
 
 describe("String Calculator", () => {
   let calculator: StringCalculator
+
   beforeEach(() => {
     calculator = new StringCalculator()
   })
+
   test("Should return 0 on empty string", () => {
     expect(calculator.add("")).toBe(0)
   })
@@ -19,5 +21,9 @@ describe("String Calculator", () => {
 
   test("Should return sum of all numbers delimited by comma", () => {
     expect(calculator.add("1,2,3")).toBe(6)
+  })
+
+  test("Should return sum of all numbers delimited by newline", () => {
+    expect(calculator.add("1\n2\n3")).toBe(6)
   })
 })
