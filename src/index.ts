@@ -25,9 +25,14 @@ class StringCalculator {
     let defaultDelimiter = /,|\n/ // Default delimiters: comma or newline
 
     if (match) {
-      // Extract the custom delimiter and numbers section
-      const escapedDelimiter = match[1].replace(/[.*+?^${}()|[\]\\]/g, "\\$&") // Escape special characters
-      defaultDelimiter = new RegExp(escapedDelimiter, "g") // Convert custom delimiter to a regex
+      // Extract all custom delimiters
+      const delimiters = [...match[0].matchAll(/\[(.+?)\]/g)].map((m) => m[1])
+
+      // Escape special characters and join delimiters into a regex pattern
+      const escapedDelimiters = delimiters.map((d) =>
+        d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      )
+      defaultDelimiter = new RegExp(escapedDelimiters.join("|"), "g") // Combine into a regex
       inputText = text.slice(match[0].length) // Remove delimiter definition
     }
 
