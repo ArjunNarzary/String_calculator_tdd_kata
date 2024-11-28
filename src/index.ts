@@ -1,6 +1,10 @@
 class StringCalculator {
-  public add(text: string): number {
-    return -1
+  public add(text: string): number | string | undefined {
+    if (text) {
+      return -1
+    } else {
+      return 0
+    }
   }
 }
 
