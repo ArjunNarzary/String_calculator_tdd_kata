@@ -12,4 +12,8 @@ describe("String Calculator", () => {
   test("Should return 1 on '1'", () => {
     expect(calculator.add("1")).toBe(1)
   })
+
+  test("Should return sum of 2 numbers delimeted by comma", () => {
+    expect(calculator.add("1,2")).toBe(3)
+  })
 })
